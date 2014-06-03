@@ -15,7 +15,7 @@ public class Submission extends TeechModel{
 	 * Create a Submission object
 	 */
 	public Submission() {
-		endpoint="submission";
+		endpoint="submissions";
 	}
 
 	/**
