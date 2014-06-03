@@ -16,7 +16,7 @@ public class Material extends TeechModel{
 	 * Create a Material object
 	 */
 	public Material() {
-		endpoint="materials";
+		endpoint="materials/";
 	}
 	
 	/**

@@ -1,6 +1,5 @@
 package teech.sdk;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 import teech.sdk.exceptions.APIConnectionException;

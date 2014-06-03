@@ -16,13 +16,12 @@ public class Connect{
 private URL url;
 private HttpURLConnection huc;
 private String contetx = "";
-private boolean flag;
 private String apik;
 private String appk;
 private int respCode;
 
 	
-	public Connect(String address, String method, String text) throws InvalidRequestException, TeechAuthenticationException, APIConnectionException, TeechException{
+	public Connect(String address, String method, String text) throws InvalidRequestException, TeechAuthenticationException, APIConnectionException, TeechException {
 		
 		
 		if(android.os.Build.VERSION.SDK_INT >9){
@@ -79,12 +78,10 @@ private int respCode;
 			}
 				
 			respCode = ((HttpURLConnection)huc).getResponseCode();
-			flag = true;
 			in.close();
 			
 		}catch(IOException e){
-			e.printStackTrace();
-			flag = false;
+			respCode = this.getResponseCode();
 			if(respCode==400){
 				throw new InvalidRequestException();
 			}
@@ -104,11 +101,14 @@ private int respCode;
 		return contetx;
 	}
 	
-	public boolean getConnect(){
-		return flag;
+	public int getResponseCode(){
+		try {
+			respCode = ((HttpURLConnection)huc).getResponseCode();
+			return respCode;
+		} catch (IOException e1) {
+			return 0;
+		}
 	}
 	
-	public int getResponseCode(){
-		return respCode;
-	}
+	
 }

@@ -26,6 +26,8 @@ public class TeechModel {
 	 * @exlude 
 	 */
 	public boolean save() throws InvalidRequestException, TeechAuthenticationException, APIConnectionException, TeechException, Exception {
+		System.out.println("U"+urlTeech+endpoint);
+		System.out.println("POST"+this.fields.toString());
 		Connect cn = new Connect(urlTeech+endpoint,"POST", this.fields.toString());
 		String result = cn.getResult();
 		this.fields = new JSONObject(result);

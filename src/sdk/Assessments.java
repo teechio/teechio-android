@@ -14,7 +14,7 @@ public class Assessments extends TeechModel {
 	 * Create a Assessment object
 	 */
 	public Assessments(){
-		endpoint="Assessment";
+		endpoint="Assessment/";
 	}
 	
 }
