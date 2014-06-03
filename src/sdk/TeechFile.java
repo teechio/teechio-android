@@ -11,7 +11,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.HashMap;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -29,7 +28,7 @@ import android.util.Log;
 public class TeechFile extends TeechModel {
 	
 	public TeechFile(){
-		this.fields = new HashMap<String, Object>();
+		endpoint="files";
 	}
 
 	/**
@@ -128,22 +127,6 @@ public class TeechFile extends TeechModel {
 		}
 		
     }
-	
-	/**
-	 * Return a String value. The String contienes the file url.
-	 */
-	public String getUrl(){
-		String url = fields.get("url").toString();
-		return url;
-	}
-	
-	/**
-	 * Return a String value. The String contienes the file name.
-	 */
-	public String getName(){
-		String url = fields.get("name").toString();
-		return url;
-	}
 	
 	/**
 	 * Return a Boolean value. If the TecchFile is correctly deleted, this boolean is true, false otherwise. 
