@@ -40,11 +40,11 @@ public class TeechModel {
 	 * @exlude 
 	 */
 	public JSONObject fetch(String id) throws InvalidRequestException, TeechAuthenticationException, APIConnectionException, TeechException, Exception{
-			String url = urlTeech+endpoint+"/"+id;
-			Connect cn = new Connect(url,"GET", "");
-			String result = cn.getResult();
-			this.fields = new JSONObject(result);
-			return fields;
+		String url = urlTeech+endpoint+"/"+id;
+		Connect cn = new Connect(url,"GET", "");
+		String result = cn.getResult();
+		this.fields = new JSONObject(result);
+		return fields;
 	}
 	
 	
@@ -56,9 +56,9 @@ public class TeechModel {
 	 * @exlude 
 	 */
 	public boolean delete(String id) throws InvalidRequestException, TeechAuthenticationException, APIConnectionException, TeechException{
-			String url = urlTeech+endpoint+"/"+id;
-			new Connect(url,"DELETE", "");
-			return true;
+		String url = urlTeech+endpoint+"/"+id;
+		new Connect(url,"DELETE", "");
+		return true;
 	}
 	
 	/**

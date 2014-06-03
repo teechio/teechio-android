@@ -1,6 +1,8 @@
 package teech.sdk;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
+
 import teech.sdk.exceptions.APIConnectionException;
 import teech.sdk.exceptions.InvalidRequestException;
 import teech.sdk.exceptions.TeechAuthenticationException;
@@ -45,34 +47,12 @@ public class User extends TeechModel {
 	 * @return boolean
 	 */
 	public JSONObject auth(String user, String password) throws InvalidRequestException, TeechAuthenticationException, APIConnectionException, TeechException, Exception{
-		JSONObject object = null;
-		String url = urlTeech+endpoint+"/signin?username="+user+"&password="+password;
-		Connect cn = new Connect(url,"GET","");
+		String url = urlTeech+endpoint+"/signin";
+		String text = "{\"username\":\""+user+"\", \"password\":\""+password+"\"}";
+		Connect cn = new Connect(url,"POST", text);
 		String result = cn.getResult();
-		object = new JSONObject(result);
-		return object;
+		return new JSONObject(result);
 	}
+
 	
-	/**
-	 * Return a boolean value. If the user Id and password are correctly, the boolean value is true, false otherwise. 
-	 * <p>
-	 * @param  user the Id of the user
-	 * @param  password the password of the user
-	 * @return boolean
-	 * @throws TeechException 
-	 * @throws APIConnectionException 
-	 * @throws TeechAuthenticationException 
-	 * @throws InvalidRequestException 
-	 */
-	public boolean logIn(String user, String password) throws InvalidRequestException, TeechAuthenticationException, APIConnectionException, TeechException{
-		String url = urlTeech+endpoint+"/signin?username="+user+"&password="+password;
-		Connect cn = new Connect(url,"GET","");
-		int code = cn.getResponseCode();
-		 if(code==200){
-			 return true;
-		 }else{
-			 return false;
-		 }
-	}
-			
 }

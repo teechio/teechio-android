@@ -26,15 +26,9 @@ public class Enrollment extends TeechModel{
 	 * @throws InvalidRequestException 
 	 */
 	public static boolean enroll(String idUser, String module) throws InvalidRequestException, TeechAuthenticationException, APIConnectionException, TeechException{
-		int code=0;
 		String url = urlTeech+"enrollments/"+idUser+"/in/"+module;
-		Connect cn = new Connect(url,"PUT", "");
-		code = cn.getResponseCode();
-		if(code==200){
-			return true;
-		}else{
-			return false;
-		}
+		new Connect(url,"PUT", "");
+		return true;
 	}
 
 	
@@ -50,15 +44,9 @@ public class Enrollment extends TeechModel{
 	 * @throws InvalidRequestException 
 	 */
 	public boolean delete(String idUser, String idModule) throws InvalidRequestException, TeechAuthenticationException, APIConnectionException, TeechException{
-		int code=0;
 		String url = urlTeech+"enrollments/"+idUser+"/withdraw/"+idModule;
-		Connect cn = new Connect(url,"DELETE", "");
-		code = cn.getResponseCode();
-		 if(code==200){
-			 return true;
-		 }else{
-			 return false;
-		 }
+		new Connect(url,"DELETE", "");
+		return true;
 	}
 		
 }
