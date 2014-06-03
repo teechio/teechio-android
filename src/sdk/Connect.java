@@ -2,6 +2,10 @@ package teech.sdk;
 import java.io.*;
 import java.net.*;
 
+import teech.sdk.exceptions.APIConnectionException;
+import teech.sdk.exceptions.InvalidRequestException;
+import teech.sdk.exceptions.TeechAuthenticationException;
+import teech.sdk.exceptions.TeechException;
 import android.os.StrictMode;
 
 /**
@@ -18,7 +22,7 @@ private String appk;
 private int respCode;
 
 	
-	public Connect(String address, String method, String text){
+	public Connect(String address, String method, String text) throws InvalidRequestException, TeechAuthenticationException, APIConnectionException, TeechException{
 		
 		
 		if(android.os.Build.VERSION.SDK_INT >9){
@@ -80,20 +84,18 @@ private int respCode;
 			
 		}catch(IOException e){
 			e.printStackTrace();
-			InputStream r = huc.getErrorStream();
-			BufferedReader in;
-			try {
-				respCode = ((HttpURLConnection)huc).getResponseCode();
-				in = new BufferedReader(new InputStreamReader(r));
-				String inputLine;
-				while ((inputLine = in.readLine()) != null){
-					System.out.println("Connection Error: "+respCode+" "+inputLine);
-				}
-				in.close();
-			} catch (IOException e1) {
-				e1.printStackTrace();
-			}
 			flag = false;
+			if(respCode==400){
+				throw new InvalidRequestException();
+			}
+			if(respCode==401){
+				throw new TeechAuthenticationException();
+			}
+			if(respCode==404){
+				throw new APIConnectionException();
+			}else{
+				throw new TeechException();
+			}
 		}
 		
 	}

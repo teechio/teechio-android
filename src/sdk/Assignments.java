@@ -52,6 +52,7 @@ public class Assignments extends TeechModel {
 	 * <p>
 	 * @param title a title of the material
 	 * @param material a materialId of the material
+	 * @param module moduleId of the module
 	 * @return boolean
 	 */
 	public boolean create(String title, String material){

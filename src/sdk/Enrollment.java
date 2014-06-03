@@ -3,6 +3,11 @@ package teech.sdk;
 
 import org.json.JSONObject;
 
+import teech.sdk.exceptions.APIConnectionException;
+import teech.sdk.exceptions.InvalidRequestException;
+import teech.sdk.exceptions.TeechAuthenticationException;
+import teech.sdk.exceptions.TeechException;
+
 /**
  * Enrollments allows you to enroll a user in a module and keep track of users enrollments.
  */
@@ -19,8 +24,12 @@ public class Enrollment extends TeechModel{
 	 * @param idUser a userId of the user
 	 * @param module a moduleId of the module
 	 * @return boolean
+	 * @throws TeechException 
+	 * @throws APIConnectionException 
+	 * @throws TeechAuthenticationException 
+	 * @throws InvalidRequestException 
 	 */
-	public static boolean enroll(String idUser, String module){
+	public static boolean enroll(String idUser, String module) throws InvalidRequestException, TeechAuthenticationException, APIConnectionException, TeechException{
 		int code=0;
 			String url = urlTeech+"enrollments/"+idUser+"/in/"+module;
 			Connect cn = new Connect(url,"PUT", "");

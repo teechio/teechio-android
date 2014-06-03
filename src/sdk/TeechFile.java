@@ -16,6 +16,10 @@ import java.util.HashMap;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import teech.sdk.exceptions.APIConnectionException;
+import teech.sdk.exceptions.InvalidRequestException;
+import teech.sdk.exceptions.TeechAuthenticationException;
+import teech.sdk.exceptions.TeechException;
 import android.os.StrictMode;
 import android.util.Log;
 
@@ -34,8 +38,12 @@ public class TeechFile extends TeechModel {
 	 * @param name a name of the user
 	 * @param path a local path where the file resides
 	 * @return boolean
+	 * @throws InvalidRequestException 
+	 * @throws TeechAuthenticationException 
+	 * @throws APIConnectionException 
+	 * @throws TeechException 
 	 */
-	public boolean upload(String name, String path) throws IOException{
+	public boolean upload(String name, String path) throws IOException, InvalidRequestException, TeechAuthenticationException, APIConnectionException, TeechException{
 		
 		if(android.os.Build.VERSION.SDK_INT > 9){
 			StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -106,7 +114,17 @@ public class TeechFile extends TeechModel {
 		if(respCode==200){
 			return true;
 		}else{
-			return false;
+			if(respCode==400){
+				throw new InvalidRequestException();
+			}
+			if(respCode==401){
+				throw new TeechAuthenticationException();
+			}
+			if(respCode==404){
+				throw new APIConnectionException();
+			}else{
+				throw new TeechException();
+			}
 		}
 		
     }
@@ -132,8 +150,12 @@ public class TeechFile extends TeechModel {
 	 * <p>
 	 * @param fileName a name of the file
 	 * @return boolean
+	 * @throws TeechException 
+	 * @throws APIConnectionException 
+	 * @throws TeechAuthenticationException 
+	 * @throws InvalidRequestException 
 	 */
-	public boolean delete(String fileName){
+	public boolean delete(String fileName) throws InvalidRequestException, TeechAuthenticationException, APIConnectionException, TeechException{
 		Connect cn = new Connect("http://api.teech.io/files/"+fileName,"DELETE", "");
 		int code = cn.getResponseCode();
 		if(code==200){

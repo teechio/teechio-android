@@ -49,7 +49,7 @@ public class MainActivity extends Activity {
 Version
 ----
 
-Beta 0.3.0
+Beta 0.3.1
 
 Teech.io Docs
 -----------
