@@ -11,6 +11,6 @@ public class Assignments extends TeechModel {
 	 * Create a Assignment object
 	 */
 	public Assignments(){
-		endpoint="assignments/";
+		endpoint="assignments";
 	}
 }

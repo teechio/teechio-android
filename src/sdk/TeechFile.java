@@ -28,7 +28,7 @@ import android.util.Log;
 public class TeechFile extends TeechModel {
 	
 	public TeechFile(){
-		endpoint="files/";
+		endpoint="files";
 	}
 
 	/**

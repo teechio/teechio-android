@@ -11,7 +11,7 @@ import teech.sdk.exceptions.TeechException;
 public class Enrollment extends TeechModel{
 	
 	public Enrollment() {
-		endpoint="enrollments/";
+		endpoint="enrollments";
 	}
 	
 	/**

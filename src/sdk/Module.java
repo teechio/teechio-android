@@ -13,7 +13,7 @@ public class Module extends TeechModel{
 	 * Create a Module object
 	 */
 	public Module() {
-		endpoint="modules/";
+		endpoint="modules";
 	}
 	
 	

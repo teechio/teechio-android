@@ -13,7 +13,7 @@ public class TeechObject extends TeechModel {
 	 * Creates a new TeechObject
 	 */
 	public TeechObject(){
-		endpoint="classes/";
+		endpoint="classes";
 	}
 	
 
