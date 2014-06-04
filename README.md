@@ -40,7 +40,10 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
-		Teech.init("0wh2OEEb&5sjd834dVjXXXXX3218498c","a384612XXXX2OEEb&5sjd2147581");//Teech.io initialization
+		/*
+	 	* Insert your "API Key" and your "Application Id"
+	 	*/
+		Teech.init("0wh2OEEb&5sjd834dVjXXXXX3218498c","a384612XXXX2OEEb&5sjd2147581"); //Teech.io initialization
 
 	}
 }
