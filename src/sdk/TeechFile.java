@@ -52,7 +52,7 @@ public class TeechFile extends TeechModel {
 		byte[] bytes = null;
         File f = new File(path);
 		try {
-			 FileInputStream fis = new FileInputStream(f);
+			FileInputStream fis = new FileInputStream(f);
 			ByteArrayOutputStream bos = new ByteArrayOutputStream();
 			byte[] buf = new byte[1024];
 			try {

@@ -29,7 +29,7 @@ public class Submission extends TeechModel{
 	 * @throws TeechAuthenticationException 
 	 * @throws InvalidRequestException 
 	 */
-	public boolean grading(String submissionId, String score) throws InvalidRequestException, TeechAuthenticationException, APIConnectionException, TeechException{
+	public boolean grade(String submissionId, String score) throws InvalidRequestException, TeechAuthenticationException, APIConnectionException, TeechException{
 		int code=0;
 		String url = urlTeech+endpoint+"/"+submissionId+"/score";
 		String s = "{\"score\":\""+score+"\"}";
