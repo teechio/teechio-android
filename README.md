@@ -70,8 +70,8 @@ License
 
 MIT
 
-[Android]:http://teech.io/docs/android/
-[RestApi]:http://teech.io/docs/rest-api/
+[Android]:http://developer.teech.io/?android
+[RestApi]:http://developer.teech.io/?curl
 [Twitter]:https://twitter.com/teech_io
 [Website]:http://www.teech.io
 [Drop us a line]: mailto:support@teech.io

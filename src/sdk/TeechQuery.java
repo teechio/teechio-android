@@ -1,6 +1,9 @@
 package teech.sdk;
 
 
+import java.net.URLEncoder;
+import java.util.Iterator;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -23,6 +26,16 @@ public class TeechQuery extends TeechModel{
 	}
 	
 	public TeechQuery search(JSONObject constraints) {
+		Iterator<?> keys = constraints.keys();
+
+		while( keys.hasNext() ){
+		  try{
+		    String key = URLEncoder.encode(keys.next().toString(),"UTF-8");
+		    String value =  URLEncoder.encode(constraints.get(key).toString(),"UTF-8");
+		    constraints.put(key, value);
+		  } catch (Exception e) { e.printStackTrace(); }    
+		}
+		
 		this.path += "query=" + constraints.toString() + "&";
 		return this;
 	}
@@ -61,9 +74,12 @@ public class TeechQuery extends TeechModel{
 	public JSONArray get() throws InvalidRequestException, TeechAuthenticationException, APIConnectionException, TeechException, Exception{
 		String result=null;
 		JSONArray array = null;
-		String url = urlTeech+endpoint+path;
+		String p =this.path.substring(0, this.path.length()-1);
+		String url = urlTeech+endpoint+p;
+		System.out.println("URL"+url);
 		Connect cn = new Connect(url,"GET", "");
 		result = cn.getResult();
+		System.out.println("RESULT:"+result);
 		array = new JSONArray(result);		
 		return array;
 	}

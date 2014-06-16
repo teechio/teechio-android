@@ -81,7 +81,9 @@ private int respCode;
 			in.close();
 			
 		}catch(IOException e){
+			e.printStackTrace();
 			respCode = this.getResponseCode();
+			System.out.println("CODE"+respCode);
 			if(respCode==400){
 				throw new InvalidRequestException();
 			}
