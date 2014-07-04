@@ -15,7 +15,7 @@ public class TeechModel {
 	
 	protected JSONObject fields = new JSONObject();
 	protected String endpoint;
-	public static String urlTeech="http://oop-dev.cloudapp.net:9000/";
+	public static String urlTeech="http://api.teech.io/";
 	
 
 	/**
