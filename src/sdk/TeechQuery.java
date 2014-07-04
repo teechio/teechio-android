@@ -72,14 +72,12 @@ public class TeechQuery extends TeechModel{
 	 * @throws InvalidRequestException 
 	 */
 	public JSONArray get() throws InvalidRequestException, TeechAuthenticationException, APIConnectionException, TeechException, Exception{
-		String result=null;
+		String result = null;
 		JSONArray array = null;
-		String p =this.path.substring(0, this.path.length()-1);
+		String p = this.path.substring(0, this.path.length()-1);
 		String url = urlTeech+endpoint+p;
-		System.out.println("URL"+url);
 		Connect cn = new Connect(url,"GET", "");
 		result = cn.getResult();
-		System.out.println("RESULT:"+result);
 		array = new JSONArray(result);		
 		return array;
 	}
